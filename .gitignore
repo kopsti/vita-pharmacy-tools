@@ -17,3 +17,4 @@ e2e/*.map
 
 *.iml
 
+/package-lock.json
