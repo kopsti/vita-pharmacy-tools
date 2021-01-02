@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-app.use(express.static('./dist/vita-pharmacy-tools'));
+app.use(express.static('./build/vita-pharmacy-tools'));
 
 app.use(function (req, res, next) {
   if (process.env.NODE_ENV === 'production' && req.get('X-Forwarded-Proto') !== 'https') {
@@ -12,7 +12,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/*', function (req, res) {
-  res.sendFile('index.html', {root: 'dist/vita-pharmacy-tools/'}
+  res.sendFile('index.html', {root: 'build/vita-pharmacy-tools/'}
   );
 });
 
