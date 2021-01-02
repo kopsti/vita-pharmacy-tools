@@ -1,0 +1,24 @@
+<mat-sidenav-container fullscreen class="app-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? -8 : 0">
+
+  <mat-sidenav *ngIf="showSidebar" opened='true' [mode]="mobileQuery.matches ? 'over' : 'side'"
+               [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+
+    <mat-nav-list>
+      <div class="sidebar-entry" *ngFor="let nav of navigation let last = last;">
+        <h2 mat-subheader routerLink={{nav.route}}>
+          <mat-icon class="sidebar-icon">{{nav.icon}}</mat-icon>
+          <span class="sidebar-text">{{nav.title}}</span>
+        </h2>
+        <mat-divider *ngIf="!last"></mat-divider>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <main>
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+    </main>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

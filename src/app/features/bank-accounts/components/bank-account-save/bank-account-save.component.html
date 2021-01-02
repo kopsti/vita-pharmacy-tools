@@ -1,0 +1,59 @@
+<h3 mat-dialog-title class="left-align">Save Bank Account</h3>
+
+<mat-dialog-content>
+
+  <form class="model-form" [formGroup]='modelForm' #modelDir='ngForm' (submit)='modelSubmit($event, modelDir, modelForm)'>
+
+    <div class="form-line">
+      <mat-form-field appearance="standard" class="w45">
+        <mat-label>IBAN</mat-label>
+        <label>
+          <input matInput #ibanInput maxlength='34' name='iban' formControlName='iban'/>
+        </label>
+        <mat-hint align="end">{{ibanInput.value?.length || 0}}/34</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard" class="w45">
+        <mat-label>Account Number</mat-label>
+        <label>
+          <input matInput #numberInput maxlength='30' name='number' formControlName='number'/>
+        </label>
+        <mat-hint align="end">{{numberInput.value?.length || 0}}/30</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="form-line">
+
+      <mat-form-field class="w45">
+        <mat-select required placeholder="Bank" label='Bank' formControlName='bank' name='bank'>
+          <mat-option *ngFor="let bank of banks" [value]="bank.id">
+            <div *ngIf='bank'>{{ bank.title }}</div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="w45">
+        <input type="text" required placeholder="Supplier" aria-label="Supplier" matInput #supplierInput [formControl]="supplier" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="supplierDisplay">
+          <mat-option *ngFor="let supplier of suppliers" [value]="supplier">
+            <div *ngIf='supplier'>{{ supplier.title }}</div>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <mat-dialog-actions>
+      <button type="submit" mat-icon-button color="primary" class='btn btn-default' [disabled]='modelForm.invalid'>
+        <mat-icon>check</mat-icon>
+      </button>
+      <button type="button" mat-icon-button [mat-dialog-close]="false">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-dialog-actions>
+
+  </form>
+
+</mat-dialog-content>

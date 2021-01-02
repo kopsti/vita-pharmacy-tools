@@ -1,0 +1,52 @@
+<div class="box-wrapper full-height mat-elevation-z5 centered-wrapper">
+
+  <mat-card class="box">
+
+    <mat-card-header>
+      <mat-card-title>User Registration
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form class="box-form" [formGroup]='formGroup' #dir='ngForm' (submit)='handleSubmit($event, dir, formGroup)'>
+
+        <mat-form-field class="full-width">
+          <input matInput required placeholder="Username" type='text' id='username'
+                 formControlName='usernameField'>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput required placeholder="Password" type='password' id='password'
+                 formControlName='passField'>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput required placeholder="Confirm password" type='password' id='confirmPassword'
+                 formControlName='confirmPassField'>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Choose role</mat-label>
+          <mat-select required formControlName='roleField' id='role'>
+            <mat-option value="ROLE_SYS_ADMIN">Administrator</mat-option>
+            <mat-option value="ROLE_POWER_USER">Power user</mat-option>
+            <mat-option value="ROLE_USER">Service user</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-card-actions>
+          <button mat-stroked-button color="primary" type='submit' class="btn-block full-width"
+                  [disabled]='formGroup.invalid'>Register User
+          </button>
+        </mat-card-actions>
+
+        <p *ngIf='formGroup.errors?.passwordMatch?.error'
+           color="primary">{{ formGroup.errors.passwordMatch.message}}</p>
+
+        <p *ngIf='emailSent' color="primary">Email with activation link sent.</p>
+
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+</div>

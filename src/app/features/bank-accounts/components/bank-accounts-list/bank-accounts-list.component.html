@@ -1,0 +1,45 @@
+<ng-container *ngIf="models as accounts">
+  <div *ngIf="accounts.length > 0">
+    <ng-container *ngTemplateOutlet="accountsTemplate; context:{accounts: accounts}"></ng-container>
+  </div>
+</ng-container>
+
+<ng-template #accountsTemplate let-accounts="accounts">
+
+  <h5 mat-subheader class="uppercase">Accounts</h5>
+
+  <div class="cards-wrapper">
+
+    <mat-card class="single-item" (mouseover)="toggleHover(account.id)" (mouseleave)="removeHover()" *ngFor="let account of accounts">
+
+      <mat-card-header>
+        <span class="separate-line fixed-top">
+          <strong>{{account.supplier.title}} | {{account.bank.title}}</strong>
+        </span>
+      </mat-card-header>
+
+      <mat-card-content>
+        <span class="separate-line">{{account.iban}}</span>
+        <span class="separate-line">{{account.number}}</span>
+      </mat-card-content>
+
+      <mat-card-actions class="card-actions">
+        <div *ngIf="hoveredElement === account.id" [@fade-actions] class="centered-text card-icons-wrapper fixed-bottom">
+          <button mat-icon-button (click)="saveModel('bank-account', account, 60, 45)" matTooltip="Edit account">
+            <em class="material-icons-outlined">edit</em>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteModel(account.id)" matTooltip="Delete account">
+            <em class="material-icons-outlined">delete</em>
+          </button>
+        </div>
+      </mat-card-actions>
+
+    </mat-card>
+
+  </div>
+
+</ng-template>
+
+<button mat-fab (click)="saveModel('bank-account', null, 60, 45)" class="floating-button" matTooltip="Add account">
+  <mat-icon>add</mat-icon>
+</button>

@@ -1,0 +1,51 @@
+<mat-form-field class='w45 search-card'>
+  <label>
+    <input matInput placeholder="Search" #searchInput>
+  </label>
+</mat-form-field>
+
+<div class="table-container">
+
+  <mat-table [dataSource]="dataSource" matSort matSortActive="title" matSortDisableClear matSortDirection="desc">
+
+    <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
+
+      <!-- Checkbox column -->
+      <ng-container *ngIf="column=='select'">
+        <mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [aria-label]="checkboxLabel()">
+          </mat-checkbox>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)"
+                        [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Rest of the columns -->
+      <ng-container *ngIf="column!='select'">
+        <mat-header-cell *matHeaderCellDef>{{displayMap.get(column)}}</mat-header-cell>
+        <mat-cell class="clickable" (click)="saveModel('supplier', row, 60, 77)" *matCellDef="let row">{{row[column]}}</mat-cell>
+      </ng-container>
+
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row class="mat-row" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[10, 25, 50]"></mat-paginator>
+
+</div>
+
+<button mat-fab (click)="saveModel('supplier', null, 60, 77)" class="floating-button" matTooltip="Add supplier">
+  <mat-icon>add</mat-icon>
+</button>

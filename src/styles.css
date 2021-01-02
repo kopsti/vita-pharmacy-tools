@@ -1,0 +1,291 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  display: inline;
+}
+
+/*Generic stuff*/
+
+.spacer {
+  flex: 1 0 auto;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.auto-margin {
+  margin: auto;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.w45 {
+  width: 45%;
+}
+
+.w30 {
+  width: 30%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.red {
+  color: #bf0a30;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.left-align {
+  text-align: left;
+}
+
+.accent-color {
+  color: #bdd344
+}
+
+/*Several*/
+
+.clickable {
+  cursor: pointer;
+}
+
+.button-like-icon {
+  padding: 0;
+  min-width: 0;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  line-height: 30px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+simple-snack-bar span {
+  margin: auto;
+  text-align: center;
+}
+
+.floating-button {
+  position: fixed !important;
+  bottom: 15px;
+  right: 15px;
+  z-index: 99;
+}
+
+.material-icons {
+  vertical-align: middle;
+}
+
+/*Boxes*/
+
+.centered-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.box {
+  position: relative;
+  top: 0;
+  opacity: 1;
+  float: left;
+  padding: 60px 50px 40px 50px;
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  z-index: 5;
+  max-width: 330px;
+  margin: auto;
+}
+
+.box.back {
+  transform: scale(.95);
+  -webkit-transform: scale(.95);
+  -ms-transform: scale(.95);
+  top: -20px;
+  opacity: .8;
+  z-index: -1;
+}
+
+.box:before {
+  content: "";
+  width: 100%;
+  height: 30px;
+  border-radius: 10px;
+  position: absolute;
+  top: -10px;
+  background: rgba(255, 255, 255, .6);
+  left: 0;
+  transform: scale(.95);
+  -webkit-transform: scale(.95);
+  -ms-transform: scale(.95);
+  z-index: -1;
+}
+
+.box-wrapper .box-form {
+  min-width: 100%;
+  max-width: 300px;
+  width: 100%;
+}
+
+.box-wrapper mat-card-header {
+  text-align: center;
+  width: 100%;
+  display: block;
+  font-weight: 700;
+}
+
+.box-wrapper mat-card-header mat-card-title {
+  font-size: 30px;
+  margin: 0;
+}
+
+.box-wrapper .mat-card {
+  padding: 40px 70px 50px;
+}
+
+.box-wrapper .mat-stroked-button {
+  border: 1px solid currentColor;
+  line-height: 54px;
+  background: #FFF7FA;
+}
+
+.box-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 0.8375em 0;
+}
+
+/*Forms*/
+
+.separate-line {
+  margin: 8px auto;
+  display: block !important;
+}
+
+/*Cards*/
+
+.cards-wrapper {
+  padding: 16px;
+}
+
+.cards-wrapper > mat-card {
+  width: 200px;
+}
+
+mat-divider.card-divider {
+  width: 50% !important;
+  position: relative !important;
+  margin: auto;
+}
+
+.mat-card-header-text {
+  margin: 0 !important;
+}
+
+.card-icons-wrapper {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 3px;
+  right: 3px;
+}
+
+.card-actions {
+  margin-bottom: 13px !important;
+}
+
+.fixed-top {
+  top: 8px;
+}
+
+.fixed-bottom {
+  bottom: 8px;
+}
+
+.card-icons-wrapper * {
+  font-size: 18px;
+}
+
+.card-icons-wrapper.fixed-top > * {
+  float: right;
+}
+
+mat-card.single-item:hover {
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
+}
+
+.card-icons-wrapper .mat-icon-button {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.card-icons-wrapper .mat-icon-button:hover {
+  background-color: rgba(95, 99, 104, 0.157);
+}
+
+.card-select-icon {
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/*forms*/
+
+.form-line > * {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.form-line {
+  margin-bottom: 10px;
+}
+
+mat-dialog-actions {
+  float: right;
+}
+
+/*forms*/
+
+.search-card {
+  display: block !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*tables*/
+.mat-column-select {
+  flex: 0 0 4%;
+}
+
+.mat-column-homePhoneNumber, .mat-column-mobilePhoneNumber, .mat-column-phoneNumber {
+  flex: 0 0 11%;
+}

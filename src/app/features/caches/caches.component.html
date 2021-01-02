@@ -1,0 +1,22 @@
+<h3 mat-dialog-title>Clear caches</h3>
+
+<form [formGroup]='formGroup' #dir='ngForm' (submit)='handleSubmit($event, dir, formGroup)'>
+  <mat-form-field>
+    <mat-select required placeholder="Cache" label='Cache' formControlName='cacheField'>
+      <mat-option *ngFor="let cache of caches" [value]="cache.value">
+        <div *ngIf='cache'>{{ cache.title }}</div>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <div class="modal-actions">
+    <button mat-raised-button color="primary" type='submit' class='btn btn-default' [disabled]='formGroup.invalid'>
+      Clear
+    </button>
+    <button mat-raised-button [mat-dialog-close]="false">Cancel</button>
+  </div>
+
+  <p *ngIf='cleared' color="primary">Cache cleared</p>
+
+</form>
+

@@ -1,0 +1,98 @@
+<h3 mat-dialog-title class="left-align">Save Customer</h3>
+
+<mat-dialog-content>
+
+  <form class="model-form" [formGroup]='modelForm' #modelDir='ngForm' (submit)='modelSubmit($event, modelDir, modelForm)'>
+
+    <div class="form-line">
+      <mat-form-field appearance="standard" class="w45">
+        <mat-label>First Name</mat-label>
+        <label>
+          <input matInput #firstNameInput maxlength='34' required label='First Name' name='firstName' formControlName='firstName'/>
+        </label>
+        <mat-hint align="end">{{firstNameInput.value?.length || 0}}/34</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard" class="w45">
+        <mat-label>Last Name</mat-label>
+        <label>
+          <input matInput #lastNameInput maxlength='30' required name='lastName' formControlName='lastName'/>
+        </label>
+        <mat-hint align="end">{{lastNameInput.value?.length || 0}}/30</mat-hint>
+      </mat-form-field>
+
+    </div>
+
+    <div class="form-line">
+
+      <mat-form-field appearance="standard" class="w45">
+        <mat-label>email</mat-label>
+        <label>
+          <input type="email" matInput placeholder="info@example.com" label='email' name='email'
+                 formControlName='email'/>
+        </label>
+      </mat-form-field>
+
+      <mat-slide-toggle class="w45" color='primary' label='VIP' name='vip' formControlName='vip'>VIP</mat-slide-toggle>
+    </div>
+
+    <div class="form-line">
+
+      <mat-form-field appearance="standard" class="w45">
+        <mat-label>Home Phone Number</mat-label>
+        <label>
+          <input matInput #homePhoneNumberInput maxlength='30' name='homePhoneNumber' formControlName='homePhoneNumber'/>
+        </label>
+        <mat-hint align="end">{{homePhoneNumberInput.value?.length || 0}}/30</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard" class="w45">
+        <mat-label>Mobile Phone Number</mat-label>
+        <label>
+          <input matInput #mobilePhoneNumberInput maxlength='10' name='mobilePhoneNumber' formControlName='mobilePhoneNumber'/>
+        </label>
+        <mat-hint align="end">{{mobilePhoneNumberInput.value?.length || 0}}/10</mat-hint>
+      </mat-form-field>
+
+    </div>
+
+    <div class="form-line">
+
+      <mat-form-field appearance="standard" class="w45">
+        <mat-label>Address</mat-label>
+        <label>
+          <input matInput #addressInput maxlength='30' name='address' formControlName='address'/>
+        </label>
+        <mat-hint align="end">{{addressInput.value?.length || 0}}/30</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard" class="w45">
+        <mat-label>Comments</mat-label>
+        <label>
+          <input matInput #commentsInput maxlength='10' name='comments' formControlName='comments'/>
+        </label>
+        <mat-hint align="end">{{commentsInput.value?.length || 0}}/10</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <mat-dialog-actions>
+      <button type="submit" mat-icon-button color="primary" class='btn btn-default' [disabled]='modelForm.invalid' matTooltip="Save customer">
+        <mat-icon>check</mat-icon>
+      </button>
+      <button *ngIf="!modelCreation" type="button" mat-icon-button (click)="addOrder()" matTooltip="Add order">
+        <em class="material-icons-outlined">add_shopping_cart</em>
+      </button>
+      <button *ngIf="!modelCreation" type="button" mat-icon-button color="warn" (click)="deleteModel()" matTooltip="Delete customer">
+        <em class="material-icons-outlined">delete</em>
+      </button>
+      <button type="button" mat-icon-button [mat-dialog-close]="false" matTooltip="Cancel">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-dialog-actions>
+
+  </form>
+
+</mat-dialog-content>
+

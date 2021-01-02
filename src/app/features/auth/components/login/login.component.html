@@ -1,0 +1,40 @@
+<div class="box-wrapper full-height mat-elevation-z5 centered-wrapper">
+
+  <mat-card class="box mat-elevation-z5">
+
+    <mat-card-header>
+      <mat-card-title>
+        <div class="centered-text">
+          <img alt='logo' src="https://vitapharmacy.ελ/media/uploads/2020/03/apple-touch-icon.png">
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form class="box-form" [formGroup]='formGroup' #dir='ngForm' (submit)='handleSubmit($event, dir, formGroup)'>
+
+        <mat-form-field class="full-width">
+          <input matInput required placeholder="Username" type='text' id='username'
+                 formControlName='usernameField'>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput required placeholder="Password" [type]="hide ? 'password' : 'text'" id='password'
+                 formControlName='passField'>
+
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+
+        <mat-card-actions>
+          <button mat-stroked-button color="primary" type='submit' class="btn-block full-width"
+                  [disabled]='formGroup.invalid'>Log In
+          </button>
+        </mat-card-actions>
+
+        <p *ngIf='loginErrors' class=" alert alert-danger ">{{ loginErrors }}</p>
+
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+</div>

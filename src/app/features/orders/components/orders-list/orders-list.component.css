@@ -1,0 +1,11 @@
+.completed-order {
+  background-color: #EEF3CD;
+}
+
+.expiring-order {
+  background-color: #FCECD9;
+}
+
+.expired-order {
+  background-color: #FCE1D9;
+}

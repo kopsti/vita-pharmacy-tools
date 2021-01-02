@@ -1,0 +1,67 @@
+<mat-form-field class='w45 search-card'>
+  <label>
+    <input matInput placeholder="Search" #searchInput>
+  </label>
+</mat-form-field>
+
+<ng-container *ngIf="(models | callback: importantNote) as notes">
+  <div *ngIf="notes.length > 0">
+    <ng-container *ngTemplateOutlet="notesTemplate; context:{pinned: true, notes: notes}"></ng-container>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="(models | callback: otherNote) as notes">
+  <div *ngIf="notes.length > 0">
+    <ng-container *ngTemplateOutlet="notesTemplate; context:{pinned: false, notes: notes}"></ng-container>
+  </div>
+</ng-container>
+
+<ng-template #notesTemplate let-pinned="pinned" let-notes="notes">
+
+  <h5 mat-subheader class="uppercase">{{pinned ? 'Pinned' : 'Other'}}</h5>
+
+  <div class="cards-wrapper">
+
+    <mat-card class="single-item" (mouseover)="toggleHover(note.id)" (mouseleave)="removeHover()" *ngFor="let note of notes">
+
+      <mat-card-header>
+        <mat-card-actions class="card-actions actions-wrapper">
+          <div class="right-align card-icons-wrapper fixed-top">
+            <button *ngIf="hoveredElement === note.id" [@fade-actions] mat-icon-button (click)="toggleImportant(note)" [matTooltip]="note.important ? 'Unpin note' : 'Pin note'">
+              <em [ngClass]="pinned ? 'material-icons' : 'material-icons-outlined'">push_pin</em>
+            </button>
+            <em *ngIf="note.completed" [matTooltip]="'Note is completed'" class="accent-color button-like-icon material-icons-outlined">done</em>
+          </div>
+        </mat-card-actions>
+      </mat-card-header>
+
+      <mat-card-content>
+        {{ note.content }}
+      </mat-card-content>
+
+      <mat-card-actions class="card-actions">
+        <div *ngIf="hoveredElement === note.id" [@fade-actions] class="centered-text card-icons-wrapper fixed-bottom">
+          <button class="left-align section-left" mat-icon-button (click)="toggleDone(note)" [matTooltip]="note.completed ? 'Mark note incomplete' : 'Mark note completed'">
+            <em class="material-icons-outlined">done</em>
+          </button>
+          <button mat-icon-button (click)="duplicate(note)" matTooltip="Duplicate note">
+            <em class="material-icons-outlined">content_copy</em>
+          </button>
+          <button mat-icon-button (click)="saveModel('note', note, 60, 40)" matTooltip="Edit note">
+            <em class="material-icons-outlined">edit</em>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteModel(note.id)" matTooltip="Delete note">
+            <em class="material-icons-outlined">delete</em>
+          </button>
+        </div>
+      </mat-card-actions>
+
+    </mat-card>
+
+  </div>
+
+</ng-template>
+
+<button mat-fab (click)="saveModel('note', null, 60, 40)" class="floating-button" matTooltip="Add note">
+  <mat-icon>add</mat-icon>
+</button>

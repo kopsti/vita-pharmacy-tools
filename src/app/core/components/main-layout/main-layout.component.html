@@ -1,0 +1,56 @@
+<div class="app-container" [class.is-mobile]="mobileQuery?.matches">
+
+  <mat-toolbar *ngIf="showToolbar" color='primary' class="app-toolbar">
+
+    <mat-toolbar-row>
+
+      <mat-icon class="clickable" (click)="toggleSidebar()">menu</mat-icon>
+
+      <a href=""><img class="toolbar-logo" src="/assets/vita.png" alt="Vita Pharmacy"></a>
+
+      <h1 class="toolbar-title">Vita Pharmacy Tools</h1>
+
+      <span class='spacer'></span>
+
+      <button mat-icon-button (click)="refresh()" matTooltip="Sync">
+        <mat-icon>sync</mat-icon>
+      </button>
+
+      <button *ngIf="!mobileQuery?.matches" mat-button [matMenuTriggerFor]="belowMenu">{{user}}
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+
+      <button *ngIf="mobileQuery?.matches" mat-icon-button [matMenuTriggerFor]="belowMenu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+
+      <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button [routerLink]="'auth/change-password'" class="no-margin" mat-menu-item>
+          <mat-icon>vpn_key</mat-icon>
+          Change Password
+        </button>
+        <button [routerLink]="'auth/registration'" class="no-margin" *ngIf="adminOrPowerUser" mat-menu-item>
+          <mat-icon>group_add</mat-icon>
+          Register User
+        </button>
+        <button [routerLink]="'auth/logout'" class="no-margin" mat-menu-item>
+          <mat-icon>exit_to_app</mat-icon>
+          Logout
+        </button>
+      </mat-menu>
+
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="secondary-toolbar" *ngIf="selectedItems?.length">
+      <button mat-raised-button color="accent" (click)="selectAll()" aria-label="Select All">Select All</button>
+      <button mat-raised-button color="accent" (click)="deselectAll()" aria-label="Deselect All">Deselect All</button>
+      <button mat-raised-button color="warn" (click)="deleteSelected()" aria-label="Delete">Delete Selected</button>
+      <span class="spacer"></span>
+      <span>{{ selectedItems.length }} selected</span>
+    </mat-toolbar-row>
+
+  </mat-toolbar>
+
+  <app-main-sidebar [admin]="admin" [showSidebar]="showSidebar"></app-main-sidebar>
+
+</div>

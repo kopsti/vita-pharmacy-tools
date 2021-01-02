@@ -1,0 +1,85 @@
+<h3 mat-dialog-title class="left-align">Save Order</h3>
+
+<mat-dialog-content>
+
+  <form class="model-form" [formGroup]='modelForm' #modelDir='ngForm' (submit)='modelSubmit($event, modelDir, modelForm)'>
+
+    <div class="form-line">
+      <mat-form-field appearance="standard" class="w45">
+        <mat-label>Product</mat-label>
+        <label>
+          <input matInput #productInput maxlength='34' required name='product' formControlName='product'/>
+        </label>
+        <mat-hint align="end">{{productInput.value?.length || 0}}/34</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="w45">
+        <input type="text" required placeholder="Customer" aria-label="Customer" matInput #customerInput [formControl]="customer" [matAutocomplete]="auto1">
+        <mat-autocomplete #auto1="matAutocomplete" [displayWith]="customerDisplay">
+          <mat-option *ngFor="let customer of customers" [value]="customer">
+            <div *ngIf='customer'>{{ customer.firstName }} {{ customer.lastName }}</div>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+    </div>
+
+    <div class="form-line">
+
+      <mat-form-field class="w45">
+        <mat-label>Due Date</mat-label>
+        <label>
+          <input matInput [matDatepicker]="dueDatePicker" name='expirationTimestamp' formControlName='expirationTimestamp'>
+        </label>
+        <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #dueDatePicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="w45">
+        <input type="text" required placeholder="Supplier" aria-label="Supplier" matInput #supplierInput [formControl]="supplier" [matAutocomplete]="auto2">
+        <mat-autocomplete #auto2="matAutocomplete" [displayWith]="supplierDisplay">
+          <mat-option *ngFor="let supplier of suppliers" [value]="supplier">
+            <div *ngIf='supplier'>{{ supplier.title }}</div>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+    </div>
+
+    <div class="form-line">
+
+      <mat-form-field class="w45">
+        <mat-select required placeholder="Type" label='Type' formControlName='type' name='type'>
+          <mat-option *ngFor="let type of types" [value]="type.value">
+            <div *ngIf='type'>{{ type.value }}</div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="w45">
+        <mat-select required placeholder="Status" label='Status' formControlName='status' name='status'>
+          <mat-option *ngFor="let status of statuses" [value]="status.value">
+            <div *ngIf='status'>{{ status.value }}</div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <mat-dialog-actions>
+      <button type="submit" mat-icon-button color="primary" class='btn btn-default' [disabled]='modelForm.invalid' matTooltip="Save order">
+        <mat-icon>check</mat-icon>
+      </button>
+      <button *ngIf="!modelCreation" type="button" mat-icon-button color="warn" (click)="deleteModel()" matTooltip="Delete order">
+        <em class="material-icons-outlined">delete</em>
+      </button>
+      <button type="button" mat-icon-button [mat-dialog-close]="false" matTooltip="Close">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-dialog-actions>
+
+  </form>
+
+</mat-dialog-content>
