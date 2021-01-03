@@ -9,17 +9,15 @@
       <mat-form-field appearance="standard" class="w45">
         <mat-label>Title</mat-label>
         <label>
-          <input matInput #titleInput maxlength='34' required name='title' formControlName='title'/>
+          <input matInput required name='title' formControlName='title'/>
         </label>
-        <mat-hint align="end">{{titleInput.value?.length || 0}}/34</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="standard" class="w45">
         <mat-label>Description Name</mat-label>
         <label>
-          <input matInput #descriptionInput maxlength='30' required name='description' formControlName='description'/>
+          <input matInput required name='description' formControlName='description'/>
         </label>
-        <mat-hint align="end">{{descriptionInput.value?.length || 0}}/30</mat-hint>
       </mat-form-field>
 
     </div>
@@ -36,9 +34,8 @@
       <mat-form-field appearance="standard" class="w45">
         <mat-label>Phone Number</mat-label>
         <label>
-          <input matInput #phoneNumberInput maxlength='30' name='phoneNumber' formControlName='phoneNumber'/>
+          <input matInput name='phoneNumber' formControlName='phoneNumber'/>
         </label>
-        <mat-hint align="end">{{phoneNumberInput.value?.length || 0}}/30</mat-hint>
       </mat-form-field>
 
     </div>
@@ -48,17 +45,15 @@
       <mat-form-field appearance="standard" class="w45">
         <mat-label>VAT Number</mat-label>
         <label>
-          <input matInput #vatIdInput maxlength='30' name='taxId' formControlName='taxId'/>
+          <input matInput name='taxId' formControlName='taxId'/>
         </label>
-        <mat-hint align="end">{{vatIdInput.value?.length || 0}}/30</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="standard" class="w45">
         <mat-label>VAT Authority</mat-label>
         <label>
-          <input matInput #vatAuthorityInput maxlength='30' name='taxAuthority' formControlName='taxAuthority'/>
+          <input matInput name='taxAuthority' formControlName='taxAuthority'/>
         </label>
-        <mat-hint align="end">{{vatAuthorityInput.value?.length || 0}}/30</mat-hint>
       </mat-form-field>
 
     </div>
@@ -66,9 +61,8 @@
     <mat-form-field appearance="standard" class="w45">
       <mat-label>Comments</mat-label>
       <label>
-        <input matInput #commentsInput maxlength='10' name='comments' formControlName='comments'/>
+        <input matInput name='comments' formControlName='comments'/>
       </label>
-      <mat-hint align="end">{{commentsInput.value?.length || 0}}/10</mat-hint>
     </mat-form-field>
 
     <mat-divider></mat-divider>

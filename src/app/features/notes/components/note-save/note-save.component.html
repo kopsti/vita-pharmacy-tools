@@ -5,9 +5,8 @@
   <mat-form-field appearance="standard" class="full-width">
     <mat-label>Textarea</mat-label>
     <label>
-      <textarea matInput #input maxlength='250' required name='content' formControlName='content'></textarea>
+      <textarea matInput required name='content' formControlName='content'></textarea>
     </label>
-    <mat-hint align="end">{{input.value?.length || 0}}/250</mat-hint>
   </mat-form-field>
 
   <mat-divider></mat-divider>

@@ -8,9 +8,8 @@
       <mat-form-field appearance="standard" class="w45">
         <mat-label>Product</mat-label>
         <label>
-          <input matInput #productInput maxlength='34' required name='product' formControlName='product'/>
+          <input matInput required name='product' formControlName='product'/>
         </label>
-        <mat-hint align="end">{{productInput.value?.length || 0}}/34</mat-hint>
       </mat-form-field>
 
       <mat-form-field class="w45">

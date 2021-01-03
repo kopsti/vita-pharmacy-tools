@@ -8,17 +8,15 @@
       <mat-form-field appearance="standard" class="w45">
         <mat-label>First Name</mat-label>
         <label>
-          <input matInput #firstNameInput maxlength='34' required label='First Name' name='firstName' formControlName='firstName'/>
+          <input matInput required label='First Name' name='firstName' formControlName='firstName'/>
         </label>
-        <mat-hint align="end">{{firstNameInput.value?.length || 0}}/34</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="standard" class="w45">
         <mat-label>Last Name</mat-label>
         <label>
-          <input matInput #lastNameInput maxlength='30' required name='lastName' formControlName='lastName'/>
+          <input matInput required name='lastName' formControlName='lastName'/>
         </label>
-        <mat-hint align="end">{{lastNameInput.value?.length || 0}}/30</mat-hint>
       </mat-form-field>
 
     </div>
@@ -28,8 +26,7 @@
       <mat-form-field appearance="standard" class="w45">
         <mat-label>email</mat-label>
         <label>
-          <input type="email" matInput placeholder="info@example.com" label='email' name='email'
-                 formControlName='email'/>
+          <input type="email" matInput placeholder="info@example.com" label='email' name='email' formControlName='email'/>
         </label>
       </mat-form-field>
 
@@ -41,17 +38,15 @@
       <mat-form-field appearance="standard" class="w45">
         <mat-label>Home Phone Number</mat-label>
         <label>
-          <input matInput #homePhoneNumberInput maxlength='30' name='homePhoneNumber' formControlName='homePhoneNumber'/>
+          <input matInput name='homePhoneNumber' formControlName='homePhoneNumber'/>
         </label>
-        <mat-hint align="end">{{homePhoneNumberInput.value?.length || 0}}/30</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="standard" class="w45">
         <mat-label>Mobile Phone Number</mat-label>
         <label>
-          <input matInput #mobilePhoneNumberInput maxlength='10' name='mobilePhoneNumber' formControlName='mobilePhoneNumber'/>
+          <input matInput name='mobilePhoneNumber' formControlName='mobilePhoneNumber'/>
         </label>
-        <mat-hint align="end">{{mobilePhoneNumberInput.value?.length || 0}}/10</mat-hint>
       </mat-form-field>
 
     </div>
@@ -61,17 +56,15 @@
       <mat-form-field appearance="standard" class="w45">
         <mat-label>Address</mat-label>
         <label>
-          <input matInput #addressInput maxlength='30' name='address' formControlName='address'/>
+          <input matInput name='address' formControlName='address'/>
         </label>
-        <mat-hint align="end">{{addressInput.value?.length || 0}}/30</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="standard" class="w45">
         <mat-label>Comments</mat-label>
         <label>
-          <input matInput #commentsInput maxlength='10' name='comments' formControlName='comments'/>
+          <input matInput name='comments' formControlName='comments'/>
         </label>
-        <mat-hint align="end">{{commentsInput.value?.length || 0}}/10</mat-hint>
       </mat-form-field>
     </div>
 
