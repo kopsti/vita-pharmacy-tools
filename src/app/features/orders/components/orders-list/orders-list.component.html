@@ -34,6 +34,11 @@
         <mat-cell class="clickable" (click)="saveModel('order', row, 60, 65)" *matCellDef="let row">{{row[column].firstName}} {{row[column].lastName}}</mat-cell>
       </ng-container>
 
+      <ng-container *ngIf="column=='customer_phone'">
+        <mat-header-cell *matHeaderCellDef>{{displayMap.get(column)}}</mat-header-cell>
+        <mat-cell class="clickable" (click)="saveModel('order', row, 60, 65)" *matCellDef="let row">{{row['customer'].mobilePhoneNumber}}</mat-cell>
+      </ng-container>
+
       <ng-container *ngIf="column=='expirationTimestamp'">
         <mat-header-cell *matHeaderCellDef>{{displayMap.get(column)}}</mat-header-cell>
         <mat-cell class="clickable" (click)="saveModel('order', row, 60, 65)" *matCellDef="let row">{{getDateFormat(row[column])}}</mat-cell>
@@ -45,7 +50,7 @@
       </ng-container>
 
       <!-- Rest of the columns -->
-      <ng-container *ngIf="column!='select' && column!='customer' && column!='status' && column!='expirationTimestamp'">
+      <ng-container *ngIf="column!='select' && column!='customer' && column!='customer_phone' && column!='status' && column!='expirationTimestamp'">
         <mat-header-cell *matHeaderCellDef>{{displayMap.get(column)}}</mat-header-cell>
         <mat-cell class="clickable" (click)="saveModel('order', row, 60, 65)" *matCellDef="let row">{{row[column]}}</mat-cell>
       </ng-container>

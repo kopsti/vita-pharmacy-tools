@@ -17,11 +17,12 @@ export class OrdersListComponent extends ListComponent<Order> implements OnInit,
 
   @ViewChild('searchInput', {static: true}) searchInput: ElementRef;
 
-  displayedColumns = ['select', 'product', 'customer', 'status', 'expirationTimestamp'];
+  displayedColumns = ['select', 'product', 'customer', 'customer_phone', 'status', 'expirationTimestamp'];
   displayMap: Map<string, string> = new Map([
     ['select', 'select'],
     ['product', 'Product'],
     ['customer', 'Customer'],
+    ['customer_phone', 'Phone Number'],
     ['status', 'Status'],
     ['expirationTimestamp', 'Due date']
   ]);
