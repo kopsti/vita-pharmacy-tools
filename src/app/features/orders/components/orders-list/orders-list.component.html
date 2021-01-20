@@ -6,7 +6,7 @@
 
 <div class="table-container">
 
-  <mat-table [dataSource]="dataSource" matSort matSortActive="expiration_date" matSortDisableClear matSortDirection="desc">
+  <mat-table [dataSource]="dataSource" matSort matSortActive="expirationTimestamp" matSortDisableClear matSortDirection="desc">
 
 
     <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
@@ -30,7 +30,7 @@
       </ng-container>
 
       <ng-container *ngIf="column=='customer'">
-        <mat-header-cell *matHeaderCellDef>{{displayMap.get(column)}}</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{displayMap.get(column)}}</mat-header-cell>
         <mat-cell class="clickable" (click)="saveModel('order', row, 60, 65)" *matCellDef="let row">{{row[column].firstName}} {{row[column].lastName}}</mat-cell>
       </ng-container>
 
@@ -40,7 +40,7 @@
       </ng-container>
 
       <ng-container *ngIf="column=='expirationTimestamp'">
-        <mat-header-cell *matHeaderCellDef>{{displayMap.get(column)}}</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{displayMap.get(column)}}</mat-header-cell>
         <mat-cell class="clickable" (click)="saveModel('order', row, 60, 65)" *matCellDef="let row">{{getDateFormat(row[column])}}</mat-cell>
       </ng-container>
 
